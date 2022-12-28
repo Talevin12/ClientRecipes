@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.LoginActivity">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/login_IMG_grocery"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:scaleType="centerCrop"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/login_LBL_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="90dp"
+        android:text="WELCOME TO FOODIZ"
+        android:textSize="60dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/login_LAYOUT_fields"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/login_LBL_welcome"
+        android:layout_marginTop="20dp"
+        android:layout_centerInParent="true"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_LBL_usersuperapp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2023a.Sharon.Tavady"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:enabled="false"
+            />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_TEXT_useremail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:textColorHint="@color/black"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:textSize="25dp"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/login_IMG_chef"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        app:srcCompat="@drawable/img_chef"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/login_LAYOUT_fields"
+        android:layout_marginTop="35dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/login_BTN_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:textSize="28dp"
+        android:backgroundTint="@color/black"
+        android:text="Login!"
+        android:textColor="@color/white"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/login_LBL_newToFoodiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:text="New to Foodiz? Create an account!"
+        android:textColor="#0E28B9"/>
+
+</RelativeLayout>
