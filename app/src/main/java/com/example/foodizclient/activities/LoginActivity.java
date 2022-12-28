@@ -27,7 +27,17 @@ public class LoginActivity extends AppCompatActivity {
 
     AuthenticationManager authenticationManager;
 
-    CallBack_OpenPageProtocol callBack_userProtocol = (CallBack_OpenPageProtocol) userSuperApp -> openMainMenuPage(userSuperApp);
+    CallBack_OpenPageProtocol callBack_userProtocol = new CallBack_OpenPageProtocol() {
+        @Override
+        public void openMainMenuPage(String userSuperApp) {
+            openMainMenu(userSuperApp);
+        }
+
+        @Override
+        public void openLoginPage() {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void submitClicked(String userSuperApp, String userEmail) throws IOException {
-        authenticationManager.checkUserInput(userSuperApp, userEmail, this);
+        authenticationManager.checkLoginUserInput(userSuperApp, userEmail, this);
     }
 
     private void newToFoodizClicked() {
@@ -76,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void openMainMenuPage(String userSuperApp) {
+    private void openMainMenu(String userSuperApp) {
         Intent intent = new Intent(this, MainMenuActivity.class);
         intent.putExtra(MainMenuActivity.KEY_USERSUPERAPP, userSuperApp);
         startActivity(intent);

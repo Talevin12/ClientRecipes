@@ -1,9 +1,12 @@
 package com.example.foodizclient.authentication.apiAssets;
 
+import com.example.foodizclient.boundaries.NewUserBoundary;
 import com.example.foodizclient.boundaries.UserBoundary;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface APIInterface {
@@ -17,6 +20,6 @@ public interface APIInterface {
 //    Call<UserList> doGetUserList(@Query("page") String page);
 //
 //    @FormUrlEncoded
-//    @POST("/api/users?")
-//    Call<UserList> doCreateUserWithField(@Field("name") String name, @Field("job") String job);
+    @POST("/superapp/users")
+    Call<UserBoundary> register(@Body NewUserBoundary newUser);
 }

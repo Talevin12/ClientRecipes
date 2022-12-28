@@ -1,5 +1,6 @@
 package com.example.foodizclient;
 
 public interface CallBack_OpenPageProtocol {
-    void openPage(String userSuperApp);
+    void openMainMenuPage(String userSuperApp);
+    void openLoginPage();
 }

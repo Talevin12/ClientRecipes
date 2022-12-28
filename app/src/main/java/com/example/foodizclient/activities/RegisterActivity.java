@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.bumptech.glide.Glide;
+import com.example.foodizclient.CallBack_OpenPageProtocol;
 import com.example.foodizclient.R;
 import com.example.foodizclient.authentication.AuthenticationManager;
 import com.google.android.material.button.MaterialButton;
@@ -22,12 +22,23 @@ public class RegisterActivity extends AppCompatActivity {
     private TextInputEditText register_EDIT_Username;
     private Spinner register_SPINNER_role;
     private TextInputEditText register_EDIT_avatar;
-    private TextInputEditText register_EDIT_superapp;
     private MaterialButton register_BTN_submit;
 
     String[] userRoles = { "MINIAPP_USER", "SUPERAPP_USER", "ADMIN" };
 
     AuthenticationManager authenticationManager;
+
+    CallBack_OpenPageProtocol callBack_userProtocol = new CallBack_OpenPageProtocol() {
+        @Override
+        public void openMainMenuPage(String userSuperApp) {
+
+        }
+
+        @Override
+        public void openLoginPage() {
+            openLogin();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +63,6 @@ public class RegisterActivity extends AppCompatActivity {
         register_EDIT_Username = findViewById(R.id.register_EDIT_Username);
         register_SPINNER_role = findViewById(R.id.register_SPINNER_role);
         register_EDIT_avatar = findViewById(R.id.register_EDIT_avatar);
-        register_EDIT_superapp = findViewById(R.id.register_EDIT_superapp);
         register_BTN_submit = findViewById(R.id.register_BTN_submit);
     }
 
@@ -60,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
         ArrayAdapter ad
                 = new ArrayAdapter(
                 this,
-                android.R.layout.simple_spinner_item,
+                R.layout.spinner_item,
                 userRoles);
 
         ad.setDropDownViewResource(
@@ -68,20 +78,19 @@ public class RegisterActivity extends AppCompatActivity {
 
         register_SPINNER_role.setAdapter(ad);
 
-        register_BTN_submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                submitClicked(  register_EDIT_email.getText().toString(),
-                        register_EDIT_Username.getText().toString(),
-                        register_SPINNER_role.getSelectedItem().toString(),
-                        register_EDIT_avatar.getText().toString(),
-                        register_EDIT_superapp.getText().toString());
-            }
-        });
+        register_BTN_submit.setOnClickListener(view -> submitClicked(register_EDIT_email.getText().toString(),
+                                                                    register_SPINNER_role.getSelectedItem().toString(),
+                                                                    register_EDIT_Username.getText().toString(),
+                                                                    register_EDIT_avatar.getText().toString()));
     }
 
-    private void submitClicked(String email, String username, String role, String avatar, String superapp) {
+    private void submitClicked(String email, String role, String username, String avatar) {
+        authenticationManager.checkRegisterUserInput(email, role, username, avatar, this);
+    }
+
+    private void openLogin() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+        finish();
     }
 }

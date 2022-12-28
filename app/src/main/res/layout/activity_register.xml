@@ -20,7 +20,8 @@
         android:layout_marginTop="20dp"
         android:text="WELCOME TO FOODIZ"
         android:textSize="60dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -38,8 +39,18 @@
             android:layout_weight="1"
             android:layout_marginBottom="10dp"
             android:hint="Email"
+            android:textColorHint="@color/black"
             android:textSize="25dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <Spinner
+            android:id="@+id/register_SPINNER_role"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/black"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/register_EDIT_Username"
@@ -48,15 +59,10 @@
             android:layout_weight="1"
             android:layout_marginBottom="10dp"
             android:hint="Username"
+            android:textColorHint="@color/black"
             android:textSize="25dp"
-            android:textStyle="bold"/>
-
-        <Spinner
-            android:id="@+id/register_SPINNER_role"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginBottom="10dp"/>
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/register_EDIT_avatar"
@@ -65,19 +71,10 @@
             android:layout_weight="1"
             android:layout_marginBottom="10dp"
             android:hint="Avatar"
+            android:textColorHint="@color/black"
             android:textSize="25dp"
-            android:textStyle="bold"/>
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/register_EDIT_superapp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginBottom="10dp"
-            android:text="2023a.Sharon.Tavady"
-            android:enabled="true"
-            android:textSize="25dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
