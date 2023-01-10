@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activities.RecipeCommentsActivity"
+    android:background="@color/white">
+
+    <ListView
+        android:id="@+id/comments_LST_comments"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/splitViews"
+        android:layout_marginBottom="10dp" />
+
+    <View
+        android:id="@+id/splitViews"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_above="@+id/comments_addComment"
+        android:background="#c0c0c0"/>
+
+
+    <RelativeLayout
+        android:id="@+id/comments_addComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/comments_EDITTEXT_newComment"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/comments_BTN_send"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="2dp"
+
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/rounded_corners_rectangle"
+            android:hint="Enter new Comment"
+            android:maxWidth="310dp"
+            android:textColor="@color/black"
+            android:textColorHint="#79000000" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/comments_BTN_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_centerVertical="true"
+            app:icon="@drawable/ic_send"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -3,17 +3,15 @@ package com.example.foodizclient.authentication;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.example.foodizclient.CallBack_OpenPageProtocol;
 import com.example.foodizclient.authentication.apiAssets.APIClient;
 import com.example.foodizclient.authentication.apiAssets.APIInterface;
 import com.example.foodizclient.boundaries.NewUserBoundary;
 import com.example.foodizclient.boundaries.UserBoundary;
 import com.example.foodizclient.boundaries.UserRole;
+import com.example.foodizclient.callbacks.CallBack_OpenPageProtocol;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
 
 import kotlin.io.TextStreamsKt;
 import retrofit2.Call;
@@ -24,6 +22,12 @@ public class AuthenticationManager {
     APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
 
     private CallBack_OpenPageProtocol callBack_userProtocol;
+
+    private Context context;
+
+    public AuthenticationManager(Context context) {
+        this.context = context;
+    }
 
     public void setCallBack_userProtocol(CallBack_OpenPageProtocol callBack_userProtocol) {
         this.callBack_userProtocol = callBack_userProtocol;
@@ -41,7 +45,7 @@ public class AuthenticationManager {
                     Toast.makeText(context, "Wrong Credentials! Try again", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    callBack_userProtocol.openMainMenuPage(userSuperApp);
+                    callBack_userProtocol.openPage(null, user);
                 }
             }
 
@@ -79,7 +83,7 @@ public class AuthenticationManager {
                     }
                 }
                 else {
-                    callBack_userProtocol.openLoginPage();
+                    callBack_userProtocol.openPage(null, null);
                 }
             }
 
