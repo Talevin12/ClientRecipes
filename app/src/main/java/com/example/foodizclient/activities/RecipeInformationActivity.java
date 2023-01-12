@@ -3,6 +3,7 @@ package com.example.foodizclient.activities;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -82,6 +83,12 @@ public class RecipeInformationActivity extends AppCompatActivity {
                 R.layout.list_black_text,
                 recipe.getInstructions());
         recipeInfo_LST_instructions.setAdapter(instructionsAdapter);
-        Helper.getListViewSize(recipeInfo_LST_instructions);
+//        Helper.getListViewSize(recipeInfo_LST_instructions);
+
+
+
+//        View v = instructionsAdapter.getView(instructionsAdapter.getCount()-1, null, recipeInfo_LST_instructions);
+////        recipeInfo_LST_instructions.setMinimumHeight((int)y + 10);
+//        recipeInfo_LST_instructions.getLayoutParams().height = (int)y + 10;
     }
 }

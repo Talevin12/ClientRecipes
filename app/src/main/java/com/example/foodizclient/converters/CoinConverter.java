@@ -20,7 +20,7 @@ public class CoinConverter {
         objectBoundary.setType("coins");
 
         HashMap<String, Object> details = new HashMap<>();
-        details.put("amount", coinsAmount);
+        details.put("coins", coinsAmount);
         objectBoundary.setObjectDetails(details);
 
         objectBoundary.setAlias("Mimir");
@@ -29,7 +29,7 @@ public class CoinConverter {
     }
 
     public int toCoins(ObjectBoundary objectBoundary) {
-        int coins = (int) (double) objectBoundary.getObjectDetails().get("amount");
+        int coins = (int) ((double) objectBoundary.getObjectDetails().get("coins"));
         return coins;
     }
 
