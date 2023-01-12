@@ -7,12 +7,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.foodizclient.R;
+import com.example.foodizclient.UserData;
 import com.example.foodizclient.authentication.AuthenticationManager;
+import com.example.foodizclient.boundaries.ObjectBoundary;
+import com.example.foodizclient.boundaries.UserId;
 import com.example.foodizclient.boundaries.UserRole;
 import com.example.foodizclient.callbacks.CallBack_OpenPageProtocol;
+import com.example.foodizclient.callbacks.DataCallback;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.ArrayList;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -24,7 +30,27 @@ public class RegisterActivity extends AppCompatActivity {
 
     AuthenticationManager authenticationManager;
 
-    CallBack_OpenPageProtocol callBack_userProtocol = (recipe, user) -> openLogin();
+    DataCallback dataCallback = new DataCallback() {
+        @Override
+        public void setObjectBoundary(ObjectBoundary object) {
+            openLogin();
+        }
+
+        @Override
+        public void setListOfObjects(ArrayList<ObjectBoundary> objects) {}
+
+        @Override
+        public void setObject(Object object) {}
+    };
+
+    CallBack_OpenPageProtocol callBack_userProtocol = (recipe, user) -> {
+        UserData userData = new UserData(this, new UserId()
+                .setSuperapp(user.getUserId().getSuperapp())
+                .setEmail(user.getUserId().getEmail()),
+                dataCallback);
+
+        userData.createCoinz();
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +86,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void submitClicked(String email, String username, String avatar) {
-        authenticationManager.checkRegisterUserInput(email, UserRole.MINIAPP_USER.name(), username, avatar, this);
+        authenticationManager.checkRegisterUserInput(email, UserRole.SUPERAPP_USER.name(), username, avatar, this);
     }
 
     private void openLogin() {

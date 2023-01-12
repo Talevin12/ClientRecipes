@@ -83,7 +83,7 @@ public class AuthenticationManager {
                     }
                 }
                 else {
-                    callBack_userProtocol.openPage(null, null);
+                    callBack_userProtocol.openPage(null, user);
                 }
             }
 

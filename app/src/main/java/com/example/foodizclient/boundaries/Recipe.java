@@ -7,6 +7,7 @@ import java.util.Date;
 public class Recipe implements Serializable {
     private String name;
     private UserId user;
+    private String username;
     private String description;
     private ArrayList<Ingredient> ingredients = new ArrayList<>();
     private ArrayList<String> instructions = new ArrayList<>();
@@ -31,6 +32,15 @@ public class Recipe implements Serializable {
 
     public Recipe setUser(UserId user) {
         this.user = user;
+        return this;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public Recipe setUsername(String username) {
+        this.username = username;
         return this;
     }
 

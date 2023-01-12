@@ -31,7 +31,7 @@ public interface APIInterface {
     Call<ArrayList<ObjectBoundary>> getObjectsByType(@Path("type") String type, @Query("userSuperapp") String superapp, @Query("userEmail") String email);
 
     @GET("/superapp/objects/search/byTypeAndCreatedBy/{type}/{userSuperapp}/{userEmail}")
-    Call<ObjectBoundary> getObjectsByTypeAndCreatedBy(@Path("type") String type, @Path("userSuperapp") String superapp, @Path("userEmail") String email);
+    Call<ArrayList<ObjectBoundary>> getObjectsByTypeAndCreatedBy(@Path("type") String type, @Path("userSuperapp") String superapp, @Path("userEmail") String email);
 
     @PUT("/superapp/users/{userSuperapp}/{userEmail}")
     Call<ResponseBody> updateUser(@Path("userSuperapp") String superapp, @Path("userEmail") String email, @Body UserBoundary user);

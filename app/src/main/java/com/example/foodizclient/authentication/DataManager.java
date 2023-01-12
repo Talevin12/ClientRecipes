@@ -78,20 +78,20 @@ public class DataManager {
         getObjectsByTypeCall.enqueue(getObjectsCallback);
     }
 
-    public void getObjectByTypeAndCreatedBy(String type, String superapp, String email) {
-        Call<ObjectBoundary> getObjectByTypeAndCreatedbyCall = apiInterface.getObjectsByTypeAndCreatedBy(type, superapp, email);
+    public void getObjectsByTypeAndCreatedBy(String type, String superapp, String email) {
+        Call<ArrayList<ObjectBoundary>> getObjectByTypeAndCreatedbyCall = apiInterface.getObjectsByTypeAndCreatedBy(type, superapp, email);
 
-        Callback<ObjectBoundary> getObjectCallback = new Callback<ObjectBoundary>() {
+        Callback<ArrayList<ObjectBoundary>> getObjectCallback = new Callback<ArrayList<ObjectBoundary>>() {
 
             @Override
-            public void onResponse(Call<ObjectBoundary> call, Response<ObjectBoundary> response) {
-                ObjectBoundary object = response.body();
+            public void onResponse(Call<ArrayList<ObjectBoundary>> call, Response<ArrayList<ObjectBoundary>> response) {
+                ArrayList<ObjectBoundary> objects = response.body();
 
-                dataCallback.setObjectBoundary(object);
+                dataCallback.setListOfObjects(objects);
             }
 
             @Override
-            public void onFailure(Call<ObjectBoundary> call, Throwable t) {
+            public void onFailure(Call<ArrayList<ObjectBoundary>> call, Throwable t) {
                 Toast.makeText(context, "Something Went wrong", Toast.LENGTH_LONG).show();
                 call.cancel();
             }

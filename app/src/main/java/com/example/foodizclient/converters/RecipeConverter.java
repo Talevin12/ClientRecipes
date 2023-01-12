@@ -23,6 +23,7 @@ public class RecipeConverter {
 
         HashMap<String, Object> details = new HashMap<>();
         details.put("name", recipe.getName());
+        details.put("username", recipe.getUsername());
         details.put("description", recipe.getDescription());
 
         ArrayList<HashMap<String, String>> ingredientsList = new ArrayList<>();
@@ -40,6 +41,7 @@ public class RecipeConverter {
         details.put("instructions", recipe.getInstructions());
         details.put("image", recipe.getImage());
         details.put("likes", new ArrayList<UserId>());
+        details.put("maxLikes", 3);
         objectBoundary.setObjectDetails(details);
 
         objectBoundary.setAlias("Kratos");
@@ -55,6 +57,8 @@ public class RecipeConverter {
         recipe.setUser(objectBoundary.getCreatedBy().get("userId"));
 
         recipe.setName((String)objectBoundary.getObjectDetails().get("name"));
+
+        recipe.setUsername((String) objectBoundary.getObjectDetails().get("username"));
 
         recipe.setDescription((String)objectBoundary.getObjectDetails().get("description"));
 

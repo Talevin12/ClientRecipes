@@ -126,6 +126,7 @@ public class AddPostActivity extends AppCompatActivity {
 
                 newRecipe
                         .setName(addRecipe_EDITTEXT_name.getText().toString())
+                        .setUsername(user.getUsername())
                         .setDescription(addRecipe_EDITTEXT_description.getText().toString())
                         .setIngredients(adapter_addIngredients.getIngredients())
                         .setInstructions(adapter_addInstructions.getInstructions())

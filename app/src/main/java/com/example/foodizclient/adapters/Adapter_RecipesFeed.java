@@ -64,6 +64,7 @@ public class Adapter_RecipesFeed extends RecyclerView.Adapter<Adapter_RecipesFee
         Recipe recipe = recipes.get(position);
 
         holder.recipe_LBL_name.setText(recipe.getName());
+        holder.recipe_LBL_username.setText(recipe.getUsername());
         holder.recipe_LBL_date.setText(recipe
                                         .getUploadDate()
                                         .toInstant()
@@ -121,6 +122,7 @@ public class Adapter_RecipesFeed extends RecyclerView.Adapter<Adapter_RecipesFee
     public class RecipePostViewHolder extends RecyclerView.ViewHolder {
         private AppCompatImageView  recipe_IMG_image;
         private TextView            recipe_LBL_name;
+        private TextView            recipe_LBL_username;
         private TextView            recipe_LBL_date;
         private TextView            recipe_LBL_description;
         private LottieAnimationView recipe_ANIM_likeHeart;
@@ -133,6 +135,8 @@ public class Adapter_RecipesFeed extends RecyclerView.Adapter<Adapter_RecipesFee
             recipe_IMG_image        = itemView.findViewById(R.id.recipe_IMG_image);
 
             recipe_LBL_name         = itemView.findViewById(R.id.recipe_LBL_name);
+
+            recipe_LBL_username         = itemView.findViewById(R.id.recipe_LBL_username);
 
             recipe_LBL_date  = itemView.findViewById(R.id.recipe_LBL_date);
 

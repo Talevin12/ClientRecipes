@@ -3,6 +3,7 @@ package com.example.foodizclient.activities;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodizclient.R;
 import com.example.foodizclient.RecipeData;
+import com.example.foodizclient.UserData;
 import com.example.foodizclient.adapters.Adapter_RecipesFeed;
 import com.example.foodizclient.authentication.UserManager;
 import com.example.foodizclient.boundaries.Comment;
@@ -35,6 +37,7 @@ public class RecipesFeedActivity extends AppCompatActivity {
     public static final String KEY_USER = "KEY_USER";
     private RecyclerView recipesFeed_LST_feed;
     private ExtendedFloatingActionButton recipesFeed_BTN_addRecipe;
+    private TextView recipesFeed_LBL_coinsAmount;
 
     private Adapter_RecipesFeed adapter_recipesFeed;
 
@@ -42,6 +45,7 @@ public class RecipesFeedActivity extends AppCompatActivity {
     private ArrayList<Boolean> recipesIsLike = new ArrayList<>();
 
     private UserBoundary user;
+    private int coins;
 
     CallBack_OpenPageProtocol callBack_openCommentsPageProtocol = (recipe, user) -> openCommentsPage(recipe, user);
 
@@ -115,6 +119,20 @@ public class RecipesFeedActivity extends AppCompatActivity {
         public void setObject(Object object) {}
     };
 
+    DataCallback coinsCallback = new DataCallback() {
+        @Override
+        public void setObjectBoundary(ObjectBoundary object) {}
+
+        @Override
+        public void setListOfObjects(ArrayList<ObjectBoundary> objects) {
+            coins = userData.getCoinConverter().toCoins(objects.get(0));
+            recipesFeed_LBL_coinsAmount.setText(""+ coins);
+        }
+
+        @Override
+        public void setObject(Object object) {}
+    };
+
     UserCallback userCallback = new UserCallback() {
         @Override
         public void updateUserFlag() {
@@ -124,6 +142,7 @@ public class RecipesFeedActivity extends AppCompatActivity {
 
     private RecipeData recipeData;
     private RecipeData recipeCommentsData;
+    private UserData userData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,6 +159,7 @@ public class RecipesFeedActivity extends AppCompatActivity {
 
         recipeData = new RecipeData(this, user.getUserId(), dataCallback);
         recipeCommentsData = new RecipeData(this, user.getUserId(), dataCommetsCallback);
+        userData = new UserData(this, user.getUserId(), coinsCallback);
 
         findViews();
     }
@@ -149,11 +169,13 @@ public class RecipesFeedActivity extends AppCompatActivity {
         super.onResume();
 
         userManager.updateUser(user.setRole(UserRole.MINIAPP_USER));
+        userData.getCoinz();
     }
 
     private void findViews() {
         recipesFeed_LST_feed = findViewById(R.id.recipesFeed_LST_feed);
         recipesFeed_BTN_addRecipe = findViewById(R.id.recipesFeed_BTN_addRecipe);
+        recipesFeed_LBL_coinsAmount = findViewById(R.id.recipesFeed_LBL_coinsAmount);
     }
 
     private void initViews() {
