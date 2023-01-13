@@ -1,12 +1,14 @@
 package com.example.foodizclient.boundaries;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Comment implements Serializable {
     private String username;
     private String text;
     private ObjectId commentObjectId;
     private ObjectId RecipeObjectId;
+    private Date publishDate;
 
     public String getUsername() {
         return username;
@@ -41,6 +43,15 @@ public class Comment implements Serializable {
 
     public Comment setRecipeObjectId(ObjectId recipeObjectId) {
         RecipeObjectId = recipeObjectId;
+        return this;
+    }
+
+    public Date getPublishDate() {
+        return publishDate;
+    }
+
+    public Comment setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
         return this;
     }
 

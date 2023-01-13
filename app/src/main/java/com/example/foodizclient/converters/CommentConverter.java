@@ -46,6 +46,8 @@ public class CommentConverter {
 
         comment.setCommentObjectId(objectBoundary.getObjectId());
 
+        comment.setPublishDate(objectBoundary.getCreationTimestamp());
+
         return comment;
     }
 }

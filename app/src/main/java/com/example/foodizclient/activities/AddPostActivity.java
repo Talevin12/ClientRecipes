@@ -121,8 +121,8 @@ public class AddPostActivity extends AppCompatActivity {
             if(!addRecipe_EDITTEXT_name.getText().toString().equals("") &&
             !addRecipe_EDITTEXT_description.getText().toString().equals("") &&
             newRecipe.getImage() != null &&
-            adapter_addIngredients.getItemCount() != 0 &&
-            adapter_addInstructions.getItemCount() != 0) {
+            adapter_addIngredients.getItemCount() != 1 &&
+            adapter_addInstructions.getItemCount() != 1) {
 
                 newRecipe
                         .setName(addRecipe_EDITTEXT_name.getText().toString())

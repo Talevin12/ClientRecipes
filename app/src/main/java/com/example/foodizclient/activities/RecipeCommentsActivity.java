@@ -21,6 +21,8 @@ import com.example.foodizclient.callbacks.UserCallback;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -84,6 +86,8 @@ public class RecipeCommentsActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        Collections.sort(recipe.getComments(), Comparator.comparing(Comment::getPublishDate));
+
         commentsString = recipe.getComments().stream()
                 .map(s-> s.toString())
                 .collect(Collectors.toList());
