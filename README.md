@@ -38,4 +38,4 @@
   * Click Finish
   * Click play
 
-####That's it! you succeed to run our app
+#### That's it! you succeed to run our app
