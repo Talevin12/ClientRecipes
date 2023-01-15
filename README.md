@@ -2,8 +2,13 @@
 
 
 ### Update Android Studio
-* In android studio Click Help -> Check for updates...
-* Install new version and restart visual studio
+* In Android Studio homepage left bottom click on options menu
+* Click Check for updates
+* checking... and right bottom yellow arrow will appear
+* Click on it and update and restart
+* Click on Right bottom notification and click restart
+* After update there will be more notification to install SDK
+* Click install
 
 ### Handle zip file
 * Open zip file 'FoodizClient'
